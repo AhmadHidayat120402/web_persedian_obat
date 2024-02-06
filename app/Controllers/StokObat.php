@@ -16,6 +16,11 @@ class StokObat extends BaseController
         echo view('stok_obat/index', $data);
     }
 
+    public function formCreate()
+    {
+        return view('stok_obat/create');
+    }
+
     public function create()
     {
         // lakukan validasi
@@ -66,13 +71,13 @@ class StokObat extends BaseController
         }
 
         // tampilkan form edit
-        echo view('stok-obat/edit', $data);
+        echo view('stok_obat/edit', $data);
     }
 
     public function delete($id)
     {
         $stokObat = new ModelsStokObat();
-        $stokObat->delete();
+        $stokObat->delete($id);
         return redirect('admin/stok-obat');
     }
 }

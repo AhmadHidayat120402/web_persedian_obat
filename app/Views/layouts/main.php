@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -52,11 +53,10 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
                         <li class="nav-item menu-open">
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?= base_url('admin/') ?>" class="nav-link active">
+                                    <a href="<?= base_url('admin/') ?>" class="nav-link">
                                         <p>Beranda</p>
                                     </a>
                                 </li>
@@ -68,9 +68,16 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+                            <a href="<?= base_url('admin/obat-masuk') ?>" class="nav-link">
                                 <p>
                                     Obat Masuk
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/obat-keluar') ?>" class="nav-link">
+                                <p>
+                                    Obat Keluar
                                 </p>
                             </a>
                         </li>
@@ -163,6 +170,9 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+    <?= $this->renderSection('script') ?>
+
 </body>
 
 </html>
