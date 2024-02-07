@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-3">
             <label for="" class="form-label">Sampai Tanggal</label>
-            <input type="date" class="form-control" name="sampaiTanggal" id="tglSelesai" value="<?= date('Y-m-d') ?>">
+            <input type="date" class="form-control" name="sampaiTanggal" id="tglSelesai" value="<?= $tglSelesai ?>">
         </div>
         <div class="col-md-2">
             <label for="btn-cetak" class="form-label">&nbsp;</label><br>
@@ -37,15 +37,15 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($obat_masuk as $d) : ?>
+            <?php foreach ($data as $d) : ?>
                 <tr>
                     <td><?= $d['no'] ?></td>
-                    <td><?= $d['nama_obat'] ?></td>
+                    <td><?= $d['nama'] ?></td>
                     <td><?= $d['satuan'] ?></td>
                     <td><?= $d['jumlah'] ?></td>
-                    <td><?= $d['harga_beli'] ?></td>
+                    <td><?= $d['harga'] ?></td>
                     <td>
-                        <?= $d['jumlah'] * $d['harga_beli'] ?>
+                        <?= $d['jumlah'] * $d['harga'] ?>
                     </td>
                 </tr>
 

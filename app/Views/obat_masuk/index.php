@@ -71,8 +71,10 @@
                         });
                     });
                 </script>
+            <?php endforeach ?>
         </tbody>
     </table>
+
     <div id="confirm-dialog" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -94,7 +96,7 @@
             $("#confirm-dialog").modal('show');
         }
     </script>
-<?php endforeach ?>
+
 </div>
 
 <?= $this->endsection() ?>

@@ -25,27 +25,27 @@
     </div>
 </div>
 <div class="table mt-2 p-3 table-responsive">
-    <table class="table table-bordered table-striped" id="table-obatMasuk">
+    <table class="table table-bordered table-striped" id="table-obatKeluar">
         <thead>
             <tr>
                 <th>No</th>
                 <th>Nama Obat</th>
                 <th>Satuan</th>
                 <th>Jumlah</th>
-                <th>Harga Beli</th>
+                <th>Harga Jual</th>
                 <th>Total</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($obat_masuk as $d) : ?>
+            <?php foreach ($obat_keluar as $d) : ?>
                 <tr>
                     <td><?= $d['no'] ?></td>
                     <td><?= $d['nama_obat'] ?></td>
                     <td><?= $d['satuan'] ?></td>
                     <td><?= $d['jumlah'] ?></td>
-                    <td><?= $d['harga_beli'] ?></td>
+                    <td><?= $d['harga_jual'] ?></td>
                     <td>
-                        <?= $d['jumlah'] * $d['harga_beli'] ?>
+                        <?= $d['jumlah'] * $d['harga_jual'] ?>
                     </td>
                 </tr>
 
@@ -60,7 +60,7 @@
 <?= $this->section('script') ?>
 <script>
     $(document).ready(function() {
-        $('#table-obatMasuk').DataTable();
+        $('#table-obatKeluar').DataTable();
     });
 </script>
 <?= $this->endsection() ?>

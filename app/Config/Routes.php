@@ -38,5 +38,10 @@ $routes->group('admin', function ($routes) {
 
     // laporan obat masuk dan keluar
     $routes->get('laporan-obat-masuk', 'LaporanObatMasukController::index');
+    $routes->get('ceklaporan/cetak/(:segment)/(:segment)', 'LaporanObatMasukController::cekLaporan/$1/$2');
+    $routes->get('laporan/cetak/(:segment)/(:segment)', 'LaporanObatMasukController::cetak/$1/$2');
+
     $routes->get('laporan-obat-keluar', 'LaporanObatKeluarController::index');
+    $routes->get('ceklaporan/cetak/(:segment)/(:segment)', 'LaporanObatKeluarController::cekLaporan/$1/$2');
+    $routes->get('laporan/cetak/(:segment)/(:segment)', 'LaporanObatKeluarController::cetak/$1/$2');
 });
