@@ -11,7 +11,7 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets') ?>/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -30,6 +30,25 @@
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
 
+    <style>
+        .disabled-div {
+            pointer-events: none;
+            opacity: 0.6;
+            /* Opsional: Mengurangi opacity untuk menunjukkan bahwa elemen disable */
+            cursor: not-allowed;
+            /* Opsional: Mengganti cursor menjadi tanda bahwa elemen tidak dapat di-klik */
+        }
+
+        .sticky-li:hover {
+            background-color: #000;
+            padding: 5px;
+            border-top: 1px solid #ccc;
+            border-radius: 15px;
+            font-weight: bold;
+            color: #FFF;
+        }
+    </style>
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -46,69 +65,89 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
+            <div class="navbar-nav ml-auto">
+                <p class="nav-item text-end sticky-li"> <?= 'Anda login sebagai ' . ucfirst(session('role')); ?></p>
+            </div>
         </nav>
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="<?= base_url('admin/') ?>" class="brand-link">
                 <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Apotek</span>
             </a>
-
             <div class="sidebar">
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item menu-open">
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="<?= base_url('admin/') ?>" class="nav-link">
-                                        <p>Beranda</p>
+                                <!-- <li class="nav-item">
+                                    <a href="." class="nav-link sticky-li">
+                                        <p> <?= 'Anda login sebagai ' . ucfirst(session('role')); ?></p>
                                     </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="<?= base_url('admin/stok-obat') ?>" class="nav-link">
-                                        <p> Stok Obat</p>
-                                    </a>
-                                </li>
+                                </li> -->
+                                <?php if (session('role') === 'admin' || session('role') == 'pemilik') : ?>
+                                    <li class="nav-item">
+                                        <a href="<?= base_url('admin/') ?>" class="nav-link">
+                                            <p>Beranda</p>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                                <?php if (session('role') === 'admin') : ?>
+                                    <li class="nav-item">
+                                        <a href="<?= base_url('admin/stok-obat') ?>" class="nav-link">
+                                            <p> Stok Obat</p>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
                             </ul>
                         </li>
+                        <?php if (session('role') === 'admin') : ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/obat-masuk') ?>" class="nav-link">
+                                    <p>
+                                        Obat Masuk
+                                    </p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if (session('role') === 'admin') : ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/obat-keluar') ?>" class="nav-link">
+                                    <p>
+                                        Obat Keluar
+                                    </p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if (session('role') === 'admin' || session('role') == 'pemilik') : ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/laporan-obat-masuk') ?>" class="nav-link">
+                                    <p>
+                                        Laporan Obat Masuk
+                                    </p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if (session('role') === 'admin' || session('role') == 'pemilik') : ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/laporan-obat-keluar') ?>" class="nav-link">
+                                    <p>
+                                        Laporan Obat Keluar
+                                    </p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
                         <li class="nav-item">
-                            <a href="<?= base_url('admin/obat-masuk') ?>" class="nav-link">
-                                <p>
-                                    Obat Masuk
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/obat-keluar') ?>" class="nav-link">
-                                <p>
-                                    Obat Keluar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/laporan-obat-masuk') ?>" class="nav-link">
-                                <p>
-                                    Laporan Obat Masuk
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/laporan-obat-keluar') ?>" class="nav-link">
-                                <p>
-                                    Laporan Obat Keluar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+                            <a href="<?= base_url('admin/login/logout'); ?>" class="nav-link">
                                 <p>
                                     Logout
                                 </p>
                             </a>
                         </li>
+
                     </ul>
                 </nav>
 
@@ -160,10 +199,10 @@
     <!-- ChartJS -->
     <script src="plugins/chart.js/Chart.min.js"></script>
     <!-- Sparkline -->
-    <script src="plugins/sparklines/sparkline.js"></script>
+    <!-- <script src="plugins/sparklines/sparkline.js"></script> -->
     <!-- JQVMap -->
-    <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script> -->
     <!-- jQuery Knob Chart -->
     <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
     <!-- daterangepicker -->
@@ -180,7 +219,7 @@
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="dist/js/demo.js"></script> -->
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="dist/js/pages/dashboard.js"></script>
+    <!-- <script src="dist/js/pages/dashboard.js"></script> -->
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
     <script>

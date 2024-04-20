@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class AddNoToStokObat extends Migration
+class ChangeStokObatTable extends Migration
 {
     public function up()
     {
@@ -12,6 +12,7 @@ class AddNoToStokObat extends Migration
             'no' => [
                 'type' => 'INT',
                 'constraint' => 11,
+                'after' => 'id',
             ],
         ]);
     }
